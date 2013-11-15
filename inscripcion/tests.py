@@ -7,7 +7,7 @@ Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
-from books.models import *
+from inscripcion.models import *
 import datetime
 
 class SimpleTest(TestCase):
