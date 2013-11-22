@@ -1,0 +1,137 @@
+{%extends 'base.html'%}
+{%block titulo%}Inscripcion Alumno {%endblock%}
+{%block contenido%}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>inscripcion</title>
+		<meta name="description" content="">
+		<meta name="author" content="darwelX">
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	</head>
+
+	<body>
+		<form action="." role="form" method="post" id="form1" >{% csrf_token %}
+
+			<fieldset style="width: 100%;">
+				<legend>
+					Datos Alumno
+				</legend>
+				
+				<table>
+
+					<tr>
+						<td style="text-align: right;"><label>Nacionalidad:</label></td>
+						<td>
+							<select class="span6" name="nacionalidad" class="form-control">
+								<option value="">-</option>
+								<option value="V">V</option>
+								<option value="E">E</option>
+							</select>
+						</td>
+
+						<td style="text-align: right;"><label>N° Cedula</label></td>
+						<td>
+							<input type="text" class="form-control" placeholder="Numero de Cedula" name="cedula" id="cedula"/>
+						</td>
+					</tr>
+
+					<tr>
+						<td colspan="4" align="center" style="padding: 5px;">
+							<button type="submit" name="procesarButton" value="Busccar" id="yourSubmitId" class="btn btn-primary">
+								Buscar Datos Alumno
+							</button>
+							<button type="reset" class="btn btn-danger">Borrar</button>							
+						</td>
+					</tr>	
+									
+					<tr>
+						<td style="text-align: right;" style="padding: 5px;"><label>Nombres:</label></td>
+						<td style="padding: 5px;">
+							<input type="text" disabled="disabled" class="form-control" placeholder="Nombres" name="nombres"/>
+                        </td>
+						<td style="text-align: right; padding: 5px;"><label>Apellidos:</label></td>
+						<td style="padding: 5px;">
+							<input type="text" disabled="disabled" class="form-control" placeholder="Apellidos" name="apellidos"/>
+                        </td>
+					</tr>
+
+					<tr>
+						<td style="text-align: right; padding: 5px;"><label>Sexo:</label></td>
+						<td style="padding: 5px;">
+							<input type="text" disabled="disabled" class="form-control" placeholder="Sexo" name="sexo"/>
+                        </td>
+						<td style="text-align: right; padding: 5px;"><label>Fecha de Nacimiento:</label></td>
+						<td style="padding: 5px;">
+							<input type="text" disabled="disabled" class="form-control" placeholder="Fecha de Nacimiento" name="fecha_nacimiento"/>
+                        </td>
+					</tr>
+
+					<tr>
+						<td style="text-align: right; padding: 5px;"><label>Lugar de Nacimiento:</label></td>
+						<td style="padding: 5px;">
+							<input type="text" disabled="disabled" class="form-control" placeholder="Lugar de Nacimiento" name="lugar_nacimiento"/>
+                        </td>
+						<td style="text-align: right; padding: 5px;"><label>Estado de Nacimiento:</label></td>
+						<td style="padding: 5px;">
+							<input type="text" disabled="disabled" class="form-control" placeholder="Estado de Nacimiento" name="estado_nacimiento"/>
+                        </td>
+					</tr>
+
+					<tr>
+						<td style="text-align: right; padding: 5px;"><label>Direccion Actual:</label></td>
+						<td style="padding: 5px;" colspan="3">
+							<textarea disabled="disabled" class="form-control" dirows="5" name="direccion_actual"></textarea>
+                        </td>
+					</tr>
+
+					<tr>
+						<td style="text-align: right; padding: 5px;"><label>Urbanizacion:</label></td>
+						<td style="padding: 5px;">
+							<input type="text" disabled="disabled" class="form-control" placeholder="Urbanizacion" name="urbanizacion"/>
+                        </td>
+						<td style="text-align: right; padding: 5px;"><label>Localidad:</label></td>
+						<td style="padding: 5px;">
+							<input type="text" disabled="disabled" class="form-control" placeholder="Localidad" name="localidad"/>
+                        </td>
+					</tr>
+
+					<tr>
+						<td style="text-align: right; padding: 5px;"><label>Estado:</label></td>
+						<td style="padding: 5px;">
+							<input type="text" disabled="disabled" class="form-control" placeholder="Estado" name="estado"/>
+                        </td>
+						<td style="text-align: right; padding: 5px;"><label>Email:</label></td>
+						<td style="padding: 5px;">
+							<input type="text" disabled="disabled" class="form-control" placeholder="Email" name="email"/>
+                        </td>
+					</tr>
+
+					<tr>
+						<td style="text-align: right; padding: 5px;"><label>Problema Fisico:</label></td>
+						<td style="padding: 5px;">
+							<input type="text" disabled="disabled" class="form-control" placeholder="Problema Fisico" name="problema_fisico"/>
+                        </td>
+						<td style="text-align: right; padding: 5px;"><label>Deporte que Practica:</label></td>
+						<td style="padding: 5px;">
+							<input type="text" disabled="disabled" class="form-control" placeholder="Deporte que Practica" name="deporte_practica"/>
+                        </td>
+					</tr>
+                </table>
+			</fieldset>
+
+		</form>
+	</body>
+</html>
+{%endblock%}
