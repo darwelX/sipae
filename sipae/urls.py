@@ -18,4 +18,5 @@ urlpatterns = patterns('',
     url(r'^$', 'inscripcion.views.inicio'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^inscripcion/', include('inscripcion.urls')),
 )
