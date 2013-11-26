@@ -19,6 +19,6 @@ def inscripcion(request):
             e = list(Estudiante.objects.filter(nacionalidad = n, cedula=request.POST['cedula']))
             if(len(e) > 0):
                 estudiante = e[0]
-            print type(estudiante)
+            
             
     return render_to_response('inscripcion/inscripcion.html',locals(),RequestContext(request))
