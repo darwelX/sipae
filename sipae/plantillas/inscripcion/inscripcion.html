@@ -36,14 +36,19 @@
 						<td>
 							<select class="span6" name="nacionalidad" class="form-control">
 								<option value="">-</option>
-								<option value="V">V</option>
-								<option value="E">E</option>
+								{%for nacionalidad in nacionalidades%}
+								   {%if nacionalidad.id == estudiante.nacionalidad.id%}
+										<option value="{{nacionalidad.id}}" selected="selected">{{nacionalidad.descripcion}}</option>
+								   {%else%}
+								        <option value="{{nacionalidad.id}}">{{nacionalidad.descripcion}}</option>
+								   {%endif%}
+								{%endfor%}
 							</select>
 						</td>
 
 						<td style="text-align: right;"><label>N° Cedula</label></td>
 						<td>
-							<input type="text" class="form-control" placeholder="Numero de Cedula" name="cedula" id="cedula"/>
+							<input type="text" class="form-control" placeholder="Numero de Cedula" name="cedula" id="cedula" value="{{estudiante.cedula}}"/>
 						</td>
 					</tr>
 
@@ -59,73 +64,73 @@
 					<tr>
 						<td style="text-align: right;" style="padding: 5px;"><label>Nombres:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Nombres" name="nombres"/>
+							<input type="text" disabled="disabled" class="form-control" placeholder="Nombres" name="nombres" value="{{estudiante.nombres}}"/>
                         </td>
 						<td style="text-align: right; padding: 5px;"><label>Apellidos:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Apellidos" name="apellidos"/>
+							<input type="text" disabled="disabled" class="form-control" placeholder="Apellidos" name="apellidos" value="{{estudiante.apellidos}}"/>
                         </td>
 					</tr>
 
 					<tr>
 						<td style="text-align: right; padding: 5px;"><label>Sexo:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Sexo" name="sexo"/>
+							<input type="text" disabled="disabled" class="form-control" placeholder="Sexo" name="sexo" value="{{estudiante.sexo}}"/>
                         </td>
 						<td style="text-align: right; padding: 5px;"><label>Fecha de Nacimiento:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Fecha de Nacimiento" name="fecha_nacimiento"/>
+							<input type="text" disabled="disabled" class="form-control" placeholder="Fecha de Nacimiento" name="fecha_nacimiento" value="{{estudiante.fecha_nacimiento}}"/>
                         </td>
 					</tr>
 
 					<tr>
 						<td style="text-align: right; padding: 5px;"><label>Lugar de Nacimiento:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Lugar de Nacimiento" name="lugar_nacimiento"/>
+							<input type="text" disabled="disabled" class="form-control" placeholder="Lugar de Nacimiento" name="lugar_nacimiento" value="{{estudiante.lugar_nacimiento}}"/>
                         </td>
 						<td style="text-align: right; padding: 5px;"><label>Estado de Nacimiento:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Estado de Nacimiento" name="estado_nacimiento"/>
+							<input type="text" disabled="disabled" class="form-control" placeholder="Estado de Nacimiento" name="estado_nacimiento" value="{{estudiante.estado_nacimiento}}"/>
                         </td>
 					</tr>
 
 					<tr>
 						<td style="text-align: right; padding: 5px;"><label>Direccion Actual:</label></td>
 						<td style="padding: 5px;" colspan="3">
-							<textarea disabled="disabled" class="form-control" dirows="5" name="direccion_actual"></textarea>
+							<textarea disabled="disabled" class="form-control" dirows="5" name="direccion_actual">{{estudiante.direccion_actual}}</textarea>
                         </td>
 					</tr>
 
 					<tr>
 						<td style="text-align: right; padding: 5px;"><label>Urbanizacion:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Urbanizacion" name="urbanizacion"/>
+							<input type="text" disabled="disabled" class="form-control" placeholder="Urbanizacion" name="urbanizacion" value="{{estudiante.urbanizacion}}"/>
                         </td>
 						<td style="text-align: right; padding: 5px;"><label>Localidad:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Localidad" name="localidad"/>
+							<input type="text" disabled="disabled" class="form-control" placeholder="Localidad" name="localidad" value="{{estudiante.localidad}}"/>
                         </td>
 					</tr>
 
 					<tr>
 						<td style="text-align: right; padding: 5px;"><label>Estado:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Estado" name="estado"/>
+							<input type="text" disabled="disabled" class="form-control" placeholder="Estado" name="estado" value="{{estudiante.estado}}"/>
                         </td>
 						<td style="text-align: right; padding: 5px;"><label>Email:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Email" name="email"/>
+							<input type="text" disabled="disabled" class="form-control" placeholder="Email" name="email" value="{{estudiante.email}}"/>
                         </td>
 					</tr>
 
 					<tr>
 						<td style="text-align: right; padding: 5px;"><label>Problema Fisico:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Problema Fisico" name="problema_fisico"/>
+							<input type="text" disabled="disabled" class="form-control" placeholder="Problema Fisico" name="problema_fisico" value="{{estudiante.problema_fisico}}"/>
                         </td>
 						<td style="text-align: right; padding: 5px;"><label>Deporte que Practica:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Deporte que Practica" name="deporte_practica"/>
+							<input type="text" disabled="disabled" class="form-control" placeholder="Deporte que Practica" name="deporte_practica" value="{{estudiante.deporte_practica}}"/>
                         </td>
 					</tr>
                 </table>
