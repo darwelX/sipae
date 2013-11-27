@@ -19,11 +19,107 @@
 		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		<script type="text/javascript">
+			$(function() {
+				$(".datepicker").datepicker();
+			});
+		</script>
 	</head>
 
 	<body>
-		<form action="." role="form" method="post" id="form1" >{% csrf_token %}
+		{%if mensaje_error%}
+         	<div class="alert alert-warning">
+           		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+           		{{mensaje_error}}
+         	</div>
+        {%endif%}
+        
+        {%if formEstudiante.nacionalidad.errors%}
+         	<div class="alert alert-warning">
+           		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+           		Nacionalidad {{formEstudiante.nacionalidad.errors}}
+         	</div>
+        {%endif%}
+        
+        {%if formEstudiante.cedula.errors%}
+         	<div class="alert alert-warning">
+           		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+           		Cedula {{formEstudiante.cedula.errors}}
+         	</div>
+        {%endif%}
+ 
+        {%if formEstudiante.nombres.errors%}
+         	<div class="alert alert-warning">
+           		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+           		Nombres {{formEstudiante.nombres.errors}}
+         	</div>
+        {%endif%}
+ 
+        {%if formEstudiante.apellidos.errors%}
+         	<div class="alert alert-warning">
+           		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+           		Apellidos {{formEstudiante.apellidos.errors}}
+         	</div>
+        {%endif%}  
+        
+        {%if formEstudiante.sexo.errors%}
+         	<div class="alert alert-warning">
+           		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+           		Sexo {{formEstudiante.sexo.errors}}
+         	</div>
+        {%endif%}  
 
+        {%if formEstudiante.fecha_nacimiento.errors%}
+         	<div class="alert alert-warning">
+           		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+           		Fecha de Nacimiento {{formEstudiante.fecha_nacimiento.errors}}
+         	</div>
+        {%endif%} 
+                                              
+        {%if formEstudiante.lugar_nacimiento.errors%}
+         	<div class="alert alert-warning">
+           		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+           		Lugar de Nacimiento {{formEstudiante.lugar_nacimiento.errors}}
+         	</div>
+        {%endif%} 
+
+        {%if formEstudiante.estado_nacimiento.errors%}
+         	<div class="alert alert-warning">
+           		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+           		Estado de Nacimiento {{formEstudiante.estado_nacimiento.errors}}
+         	</div>
+        {%endif%}
+ 
+        {%if formEstudiante.direccion_actual.errors%}
+         	<div class="alert alert-warning">
+           		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+           		Direccion Actual {{formEstudiante.direccion_actual.errors}}
+         	</div>
+        {%endif%}
+
+        {%if formEstudiante.urbanizacion.errors%}
+         	<div class="alert alert-warning">
+           		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+           		Urbanizacion {{formEstudiante.urbanizacion.errors}}
+         	</div>
+        {%endif%} 
+        
+        {%if formEstudiante.localidad.errors%}
+         	<div class="alert alert-warning">
+           		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+           		Localidad {{formEstudiante.localidad.errors}}
+         	</div>
+        {%endif%} 
+        
+        {%if formEstudiante.estado.errors%}
+         	<div class="alert alert-warning">
+           		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+           		Estado {{formEstudiante.estado.errors}}
+         	</div>
+        {%endif%} 
+                                             
+		<form action="." role="form" method="post" id="form1" >{% csrf_token %}
+            <input type="hidden" name="id_estudiante" value="{%if estudiante_encontrado%}{{estudiante.id}}{%else%}nuevo{%endif%}"/>
 			<fieldset style="width: 100%;">
 				<legend>
 					Datos Alumno
@@ -64,74 +160,82 @@
 					<tr>
 						<td style="text-align: right;" style="padding: 5px;"><label>Nombres:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Nombres" name="nombres" value="{{estudiante.nombres}}"/>
+							<input type="text" {%if estudiante_encontrado %}disabled="disabled" {%endif%} class="form-control" placeholder="Nombres" name="nombres" value="{{estudiante.nombres}}"/>
                         </td>
 						<td style="text-align: right; padding: 5px;"><label>Apellidos:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Apellidos" name="apellidos" value="{{estudiante.apellidos}}"/>
+							<input type="text" {%if estudiante_encontrado %}disabled="disabled" {%endif%} class="form-control" placeholder="Apellidos" name="apellidos" value="{{estudiante.apellidos}}"/>
                         </td>
 					</tr>
 
 					<tr>
 						<td style="text-align: right; padding: 5px;"><label>Sexo:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Sexo" name="sexo" value="{{estudiante.sexo}}"/>
+							<input type="text" {%if estudiante_encontrado %}disabled="disabled" {%endif%} class="form-control" placeholder="Sexo" name="sexo" value="{{estudiante.sexo}}"/>
                         </td>
 						<td style="text-align: right; padding: 5px;"><label>Fecha de Nacimiento:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Fecha de Nacimiento" name="fecha_nacimiento" value="{{estudiante.fecha_nacimiento}}"/>
+							<input type="text" {%if estudiante_encontrado %}disabled="disabled" {%endif%} class="form-control datepicker" placeholder="Fecha de Nacimiento" name="fecha_nacimiento" value="{{estudiante.fecha_nacimiento}}"/>
                         </td>
 					</tr>
 
 					<tr>
 						<td style="text-align: right; padding: 5px;"><label>Lugar de Nacimiento:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Lugar de Nacimiento" name="lugar_nacimiento" value="{{estudiante.lugar_nacimiento}}"/>
+							<input type="text" {%if estudiante_encontrado %}disabled="disabled" {%endif%} class="form-control" placeholder="Lugar de Nacimiento" name="lugar_nacimiento" value="{{estudiante.lugar_nacimiento}}"/>
                         </td>
 						<td style="text-align: right; padding: 5px;"><label>Estado de Nacimiento:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Estado de Nacimiento" name="estado_nacimiento" value="{{estudiante.estado_nacimiento}}"/>
+							<input type="text" {%if estudiante_encontrado %}disabled="disabled" {%endif%} class="form-control" placeholder="Estado de Nacimiento" name="estado_nacimiento" value="{{estudiante.estado_nacimiento}}"/>
                         </td>
 					</tr>
 
 					<tr>
 						<td style="text-align: right; padding: 5px;"><label>Direccion Actual:</label></td>
 						<td style="padding: 5px;" colspan="3">
-							<textarea disabled="disabled" class="form-control" dirows="5" name="direccion_actual">{{estudiante.direccion_actual}}</textarea>
+							<textarea {%if estudiante_encontrado %}disabled="disabled" {%endif%} class="form-control" dirows="5" name="direccion_actual">{{estudiante.direccion_actual}}</textarea>
                         </td>
 					</tr>
 
 					<tr>
 						<td style="text-align: right; padding: 5px;"><label>Urbanizacion:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Urbanizacion" name="urbanizacion" value="{{estudiante.urbanizacion}}"/>
+							<input type="text" {%if estudiante_encontrado %}disabled="disabled" {%endif%} class="form-control" placeholder="Urbanizacion" name="urbanizacion" value="{{estudiante.urbanizacion}}"/>
                         </td>
 						<td style="text-align: right; padding: 5px;"><label>Localidad:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Localidad" name="localidad" value="{{estudiante.localidad}}"/>
+							<input type="text" {%if estudiante_encontrado %}disabled="disabled" {%endif%} class="form-control" placeholder="Localidad" name="localidad" value="{{estudiante.localidad}}"/>
                         </td>
 					</tr>
 
 					<tr>
 						<td style="text-align: right; padding: 5px;"><label>Estado:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Estado" name="estado" value="{{estudiante.estado}}"/>
+							<input type="text" {%if estudiante_encontrado %}disabled="disabled" {%endif%} class="form-control" placeholder="Estado" name="estado" value="{{estudiante.estado}}"/>
                         </td>
 						<td style="text-align: right; padding: 5px;"><label>Email:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Email" name="email" value="{{estudiante.email}}"/>
+							<input type="text" {%if estudiante_encontrado %}disabled="disabled" {%endif%} class="form-control" placeholder="Email" name="email" value="{{estudiante.email}}"/>
                         </td>
 					</tr>
 
 					<tr>
 						<td style="text-align: right; padding: 5px;"><label>Problema Fisico:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Problema Fisico" name="problema_fisico" value="{{estudiante.problema_fisico}}"/>
+							<input type="text" {%if estudiante_encontrado %}disabled="disabled" {%endif%} class="form-control" placeholder="Problema Fisico" name="problema_fisico" value="{{estudiante.problema_fisico}}"/>
                         </td>
 						<td style="text-align: right; padding: 5px;"><label>Deporte que Practica:</label></td>
 						<td style="padding: 5px;">
-							<input type="text" disabled="disabled" class="form-control" placeholder="Deporte que Practica" name="deporte_practica" value="{{estudiante.deporte_practica}}"/>
+							<input type="text" {%if estudiante_encontrado %}disabled="disabled" {%endif%} class="form-control" placeholder="Deporte que Practica" name="deporte_practica" value="{{estudiante.deporte_practica}}"/>
                         </td>
+					</tr>
+					
+					<tr>
+						<td colspan="4" align="center" style="padding: 5px;">
+							<button type="submit" name="procesarButton" value="Siguiente" id="yourSubmitId" class="btn btn-primary">
+								Siguiente
+							</button>
+						</td>
 					</tr>
                 </table>
 			</fieldset>
