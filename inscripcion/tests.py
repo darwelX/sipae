@@ -34,7 +34,7 @@ class NacionalidadTest(TestCase):
 class PadreTest(TestCase):
     
     def setUp(self):
-        self.n1 = Nacionalidad(letra='V', descripcion='Venezolano')
+        self.n1 = Nacionalidad(letra='Vvvvv', descripcion='Venezolano')
         self.n1.save()
         self.p1= Padre(nombres='Darwel Alfonso',
                        apellidos="Quintero Duran",
